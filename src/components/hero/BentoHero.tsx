@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Container } from '../layout/Container';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
+import { StatsNewsletter } from './StatsNewsletter';
 import { useState } from 'react';
 
 export function BentoHero() {
@@ -101,69 +102,31 @@ export function BentoHero() {
                 </div>
               </div>
 
-              {/* Right Column - Image Section */}
-              <div className="relative h-[400px] lg:h-[600px] rounded-2xl overflow-hidden">
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary-400/30 via-accent-400/20 to-transparent rounded-2xl"></div>
-                
-                {/* Main Image */}
-                <Image
-                  src="/images/hero-background.jpg"
-                  alt="Person meditating peacefully"
-                  fill
-                  className="object-cover object-left-top rounded-2xl"
-                  priority
-                />
+              {/* Right Column - Image and Newsletter */}
+              <div className="space-y-6">
+                {/* Image Section */}
+                <div className="relative h-[400px] lg:h-[600px] rounded-2xl overflow-hidden">
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-secondary-400/30 via-accent-400/20 to-transparent rounded-2xl"></div>
+                  
+                  {/* Main Image */}
+                  <Image
+                    src="/images/hero-background.jpg"
+                    alt="Person meditating peacefully"
+                    fill
+                    className="object-cover object-left-top rounded-2xl"
+                    priority
+                  />
 
-                {/* Floating Stats Card */}
-                <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-neutral-100">
-                  <div className="space-y-4">
-                    {/* Newsletter Stats */}
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 text-sm gap-2">
-                      <div className="text-primary-500">
-                        <span className="font-bold text-lg">93%</span>
-                        <span className="text-primary-800 ml-1">stress reduction</span>
-                      </div>
-                      <div className="text-primary-500">
-                        <span className="font-bold text-lg">15K+</span>
-                        <span className="text-primary-800 ml-1">subscribers</span>
-                      </div>
-                      <div className="text-primary-500">
-                        <span className="font-bold text-lg">4.9</span>
-                        <span className="text-primary-800 ml-1">user rating</span>
-                      </div>
-                    </div>
-
-                    {/* Newsletter Form */}
-                    <form onSubmit={handleSubscribe} className="space-y-3">
-                      <div className="space-y-1">
-                        <p className="text-base font-semibold text-primary-500">Join our weekly mindfulness newsletter</p>
-                      </div>
-                      <div className="flex flex-col sm:flex-row gap-2">
-                        <Input
-                          type="email"
-                          placeholder="Enter your email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          required
-                          className="flex-1"
-                        />
-                        <Button 
-                          type="submit"
-                          variant="primary"
-                          className="bg-secondary-500 hover:bg-secondary-600 text-white w-full sm:w-auto"
-                          disabled={subscribeStatus === 'loading'}
-                        >
-                          {subscribeStatus === 'loading' ? 'Subscribing...' : 
-                           subscribeStatus === 'success' ? 'Subscribed!' : 
-                           'Get Free Tips'}
-                        </Button>
-                      </div>
-                      {subscribeStatus === 'success' && (
-                        <p className="text-xs text-secondary-500">🎉 Welcome to our mindfulness community! Check your inbox soon.</p>
-                      )}
-                    </form>
+                  {/* Stats and Newsletter - Desktop Only */}
+                  <div className="hidden lg:block">
+                    <StatsNewsletter />
                   </div>
+                </div>
+
+                {/* Stats and Newsletter - Mobile Only */}
+                <div className="block lg:hidden">
+                  <StatsNewsletter />
                 </div>
               </div>
             </div>
