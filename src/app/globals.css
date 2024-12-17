@@ -3,19 +3,73 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary Colors - Slate Blue (#3B4E59) */
+  --primary-50: #f8f9fa;
+  --primary-100: #f1f3f5;
+  --primary-200: #e9ecef;
+  --primary-300: #dee2e6;
+  --primary-400: #ced4da;
+  --primary-500: #3B4E59;
+  --primary-600: #2d3b44;
+  --primary-700: #1f292f;
+  --primary-800: #11171a;
+  --primary-900: #040505;
+
+  /* Secondary Colors - Warm Brown (#73513D) */
+  --secondary-50: #faf7f6;
+  --secondary-100: #f5efed;
+  --secondary-200: #ebdfdb;
+  --secondary-300: #e1cfc9;
+  --secondary-400: #d7bfb7;
+  --secondary-500: #73513D;
+  --secondary-600: #583d2e;
+  --secondary-700: #3d2a1f;
+  --secondary-800: #221810;
+  --secondary-900: #070503;
+
+  /* Accent Colors - Tan Brown (#A28162) */
+  --accent-50: #fbf9f6;
+  --accent-100: #f7f3ed;
+  --accent-200: #efe7db;
+  --accent-300: #e7dbc9;
+  --accent-400: #dfcfb7;
+  --accent-500: #A28162;
+  --accent-600: #7a614a;
+  --accent-700: #524133;
+  --accent-800: #29211c;
+  --accent-900: #0c0a08;
+
+  /* Neutral Colors */
+  --neutral-100: #979588;  /* Warm Gray */
+  --neutral-200: #D2D7D9;  /* Light Gray */
 }
 
+/* Dark mode colors */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Adjust colors for dark mode if needed */
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom utility classes */
+@layer components {
+  .gradient-primary {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600;
+  }
+  
+  .gradient-secondary {
+    @apply bg-gradient-to-r from-secondary-500 to-secondary-600;
+  }
+  
+  .gradient-accent {
+    @apply bg-gradient-to-r from-accent-500 to-accent-600;
+  }
+}
+
+@layer utilities {
+  .bg-grid-neutral-100\/10 {
+    background-size: 30px 30px;
+    background-image: linear-gradient(to right, rgb(245 245 245 / 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(245 245 245 / 0.1) 1px, transparent 1px);
+  }
 }
