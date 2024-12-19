@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Clock, Users, CheckCircle2, ArrowRight, ChevronRight } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/Button';
-import Image from 'next/image';
 
 interface Program {
   icon: ReactElement;

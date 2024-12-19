@@ -5,6 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Heart, Clock } from 'lucide-react';
 import { Button } from './Button';
 
+/**
+ * A popup component that encourages users to book a free consultation session.
+ * Appears after a delay and can be dismissed.
+ */
 export function BookingPopup() {
   const [isOpen, setIsOpen] = useState(false);
 

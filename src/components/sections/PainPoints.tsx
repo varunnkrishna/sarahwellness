@@ -4,40 +4,44 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Brain, Heart, Shield } from 'lucide-react';
 
-const journeyPoints = [
-  {
-    icon: Brain,
-    title: "Feeling Overwhelmed?",
-    points: [
-      "Struggling with constant stress and anxiety",
-      "Finding it hard to focus or make decisions",
-      "Feeling exhausted but unable to rest"
-    ],
-    gradient: "from-primary-500/10 via-primary-500/5 to-transparent"
-  },
-  {
-    icon: Heart,
-    title: "Seeking Connection?",
-    points: [
-      "Difficulty maintaining meaningful relationships",
-      "Feeling isolated despite being around others",
-      "Wanting to open up but not knowing how"
-    ],
-    gradient: "from-secondary-500/10 via-secondary-500/5 to-transparent"
-  },
-  {
-    icon: Shield,
-    title: "Ready for Change?",
-    points: [
-      "Recognizing patterns that no longer serve you",
-      "Wanting to build healthier boundaries",
-      "Seeking guidance but unsure where to start"
-    ],
-    gradient: "from-accent-500/10 via-accent-500/5 to-transparent"
-  }
-];
-
+/**
+ * Component that displays common pain points and challenges in mental health journey.
+ * Each point is presented with an icon and description.
+ */
 export function PainPoints() {
+  const journeyPoints = [
+    {
+      icon: Brain,
+      title: "Feeling Overwhelmed?",
+      points: [
+        "Struggling with constant stress and anxiety",
+        "Finding it hard to focus or make decisions",
+        "Feeling exhausted but unable to rest"
+      ],
+      gradient: "from-primary-500/10 via-primary-500/5 to-transparent"
+    },
+    {
+      icon: Heart,
+      title: "Seeking Connection?",
+      points: [
+        "Difficulty maintaining meaningful relationships",
+        "Feeling isolated despite being around others",
+        "Wanting to open up but not knowing how"
+      ],
+      gradient: "from-secondary-500/10 via-secondary-500/5 to-transparent"
+    },
+    {
+      icon: Shield,
+      title: "Ready for Change?",
+      points: [
+        "Recognizing patterns that no longer serve you",
+        "Wanting to build healthier boundaries",
+        "Seeking guidance but unsure where to start"
+      ],
+      gradient: "from-accent-500/10 via-accent-500/5 to-transparent"
+    }
+  ];
+
   return (
     <div className="w-full py-24 px-8 bg-gradient-to-b from-neutral-10 via-white to-neutral-50">
       <div className="w-full mx-auto">

@@ -1,15 +1,8 @@
+/**
+ * Newsletter call-to-action component with two variants: default and minimal.
+ * Supports both light and dark themes.
+ */
 'use client';
-
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Button } from '../ui/Button';
-import { Send } from 'lucide-react';
-
-interface NewsletterCTAProps {
-  variant?: 'default' | 'minimal';
-  theme?: 'light' | 'dark';
-  className?: string;
-}
 
 export function NewsletterCTA({ 
   variant = 'default', 
@@ -174,4 +167,16 @@ export function NewsletterCTA({
       )}
     </div>
   );
+}
+
+
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Button } from '../ui/Button';
+import { Send } from 'lucide-react';
+
+interface NewsletterCTAProps {
+  variant?: 'default' | 'minimal';
+  theme?: 'light' | 'dark';
+  className?: string;
 }

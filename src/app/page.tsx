@@ -4,7 +4,6 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Testimonials } from '@/components/testimonials/Testimonials';
 import { PainPoints } from '@/components/sections/PainPoints';
-import { JourneySteps } from '@/components/sections/JourneySteps';
 import { JourneyStepsMotion } from '@/components/sections/JourneyStepsMotion';
 import { WellnessProgramsSection } from '@/components/sections/WellnessProgramsSection';
 import { AboutCoach } from '@/components/sections/AboutCoach';
