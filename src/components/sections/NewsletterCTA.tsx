@@ -7,10 +7,15 @@ import { Send } from 'lucide-react';
 
 interface NewsletterCTAProps {
   variant?: 'default' | 'minimal';
+  theme?: 'light' | 'dark';
   className?: string;
 }
 
-export function NewsletterCTA({ variant = 'default', className = '' }: NewsletterCTAProps) {
+export function NewsletterCTA({ 
+  variant = 'default', 
+  theme = 'light',
+  className = '' 
+}: NewsletterCTAProps) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
@@ -57,29 +62,33 @@ export function NewsletterCTA({ variant = 'default', className = '' }: Newslette
               onSubmit={handleSubmit}
               className="max-w-md mx-auto"
             >
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 rounded-xl bg-white/90 text-neutral-800 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  className="flex-1 px-4 py-3 rounded-xl bg-white/90 text-neutral-800 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all duration-300 hover:bg-white"
                   required
                 />
                 <Button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="bg-white/90 hover:bg-secondary-600 text-neutral-700 hover:text-white px-6 py-3"
+                  className="bg-primary-800 hover:bg-primary-900 text-white px-6 py-3 transition-all duration-300 hover:scale-105 whitespace-nowrap"
                 >
                   {status === 'loading' ? (
                     'Subscribing...'
                   ) : status === 'success' ? (
                     'Subscribed!'
                   ) : (
-                    <span className="flex items-center">
+                    <motion.span 
+                      className="flex items-center justify-center"
+                      whileHover={{ x: 5 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >
                       Subscribe
                       <Send className="ml-2 h-4 w-4" />
-                    </span>
+                    </motion.span>
                   )}
                 </Button>
               </div>
@@ -87,37 +96,76 @@ export function NewsletterCTA({ variant = 'default', className = '' }: Newslette
           </div>
         </div>
       ) : (
-        <div className="relative py-8">
+        <div className="relative py-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-md mx-auto text-center mb-4"
+          >
+            <h3 className={`text-lg font-medium mb-2 ${
+              theme === 'light' ? 'text-neutral-800' : 'text-neutral-100'
+            }`}>
+              Stay Updated
+            </h3>
+            <p className={`text-sm ${
+              theme === 'light' ? 'text-neutral-600' : 'text-neutral-300'
+            }`}>
+              Join our newsletter for weekly wellness tips
+            </p>
+          </motion.div>
+
           <motion.form
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
             onSubmit={handleSubmit}
-            className="max-w-md mx-auto"
+            className="max-w-sm mx-auto"
           >
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-2">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-xl bg-white/90 text-neutral-800 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                placeholder="Your email"
+                className={`flex-1 px-4 py-2 rounded-lg transition-all duration-200
+                  ${theme === 'light' 
+                    ? 'bg-neutral-100 text-neutral-800 placeholder:text-neutral-500 focus:bg-white'
+                    : 'bg-neutral-800/50 text-white placeholder:text-neutral-400 focus:bg-neutral-800'
+                  }
+                  focus:outline-none focus:ring-1 focus:ring-primary-500`}
                 required
               />
               <Button
                 type="submit"
                 disabled={status === 'loading'}
-                className="bg-white/90 hover:bg-secondary-600 text-neutral-700 hover:text-white px-6 py-3"
+                variant="outline"
+                className={`px-6 py-2 transition-all duration-200
+                  ${theme === 'light'
+                    ? 'border-neutral-200 hover:border-primary-500 hover:text-primary-600 text-neutral-700'
+                    : 'border-neutral-700 hover:border-primary-400 hover:text-primary-400 text-neutral-300'
+                  }`}
               >
                 {status === 'loading' ? (
-                  'Subscribing...'
-                ) : status === 'success' ? (
-                  'Subscribed!'
-                ) : (
-                  <span className="flex items-center">
-                    Subscribe
-                    <Send className="ml-2 h-4 w-4" />
+                  <span className={theme === 'light' ? 'text-neutral-600' : 'text-neutral-400'}>
+                    Subscribing...
                   </span>
+                ) : status === 'success' ? (
+                  <span className={theme === 'light' ? 'text-neutral-600' : 'text-neutral-400'}>
+                    Subscribed!
+                  </span>
+                ) : (
+                  <motion.span 
+                    className="flex items-center justify-center"
+                    whileHover={{ x: 3 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    Subscribe
+                    <Send className={`ml-2 h-4 w-4 ${
+                      theme === 'light' ? 'text-neutral-600' : 'text-neutral-400'
+                    }`} />
+                  </motion.span>
                 )}
               </Button>
             </div>

@@ -55,7 +55,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto">
         {/* Newsletter Section */}
         <div className="py-16">
-          <NewsletterCTA variant="minimal" />
+          <NewsletterCTA variant="minimal" theme="dark"/>
         </div>
 
         {/* Main Footer Content */}
